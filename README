@@ -1,0 +1,9 @@
+### Before building your Snort image:
+# Current configuration assumes Snort will monitor eth1. Update barnyard2 and supervisord config files accordingly.
+# Configure barnyard2.conf with desired output settings.
+# HOME_NET must be set to a valid ip range in snort.conf. Running the default "any" will cause conflicts and prevent the service from starting
+# The Oinkcode must be set pulledpork.conf to allow download of latest snort rules
+###
+### Example run command for Snort image
+# The run command assumes you have a directory on the host machine to mount /var/log/snort and /varlog/barnyard2
+docker run -it -v /home/docker/snort/log/snort:/var/log/snort -v /home/docker/snort/log/barnyard2:/var/log/barnyard2 --net="host" <image>
